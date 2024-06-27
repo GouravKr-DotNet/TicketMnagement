@@ -1,0 +1,16 @@
+.image-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* Ensure it's on top of other content */
+  }
+  
+  /* Image styles */
+  .image-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Example: Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Example: Drop shadow */
+  }
