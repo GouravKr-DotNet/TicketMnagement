@@ -48,4 +48,9 @@ export class TicketApiService {
   return this.httpClient.put<TicketUpdateresponse>("http://localhost:5297/api/updateTicket",ticket);
  }
 
+ getTicketsByStatus(status : string) : Observable<TicketsList[]>
+ {
+  return this.httpClient.get<TicketsList[]>('http://localhost:5297/api/getTicketsByStatus?status='+status);
+ }
+
 }

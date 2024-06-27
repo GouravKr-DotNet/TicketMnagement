@@ -5,6 +5,7 @@ import { TicketRequest } from '../ticket-request';
 import { SplitPipePipe } from '../split-pipe.pipe';
 import { TicketUpdateRequest } from '../ticket-update-request';
 import { TicketUpdateresponse } from '../ticket-updateresponse';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -12,7 +13,8 @@ import { TicketUpdateresponse } from '../ticket-updateresponse';
   declarations: [],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers:[TicketRequest,SplitPipePipe,TicketUpdateRequest,TicketUpdateresponse]
 })

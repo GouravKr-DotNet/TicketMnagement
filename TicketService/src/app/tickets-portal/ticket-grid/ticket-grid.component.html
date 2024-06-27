@@ -1,4 +1,18 @@
-<button type="button" class="btn btn-light" (click)="navigateToForm()">Create New</button>
+<div class="row">
+    <div class="col-md-6">
+        <button type="button" class="btn btn-light" (click)="navigateToForm()">Create New</button>
+    </div>
+    <div class="col-md-6">
+        <label>
+            <select class="custom-select" (change)="statusOnChange(statusDrop.value)" #statusDrop >
+                <option value="All" selected>All</option>
+                <option value="Pending">Pending</option>
+                <option value="Resolved">Resolved</option>
+                <option value="Hold">On-Hold</option>
+            </select>
+        </label>
+    </div>
+</div>
 <table class="table">
     <thead>
       <tr>

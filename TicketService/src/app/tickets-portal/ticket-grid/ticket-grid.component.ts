@@ -18,6 +18,7 @@ export class TicketGridComponent implements OnInit {
   message! : string;
   cuurentIndex! : number;
   editTicket : TicketsList = new TicketsList();
+  selectedStatus! : string;
 
   @ViewChild('modalButtonCnf') responseBtn! : ElementRef;
 
@@ -69,6 +70,15 @@ export class TicketGridComponent implements OnInit {
         this.responseBtn.nativeElement.click();
       }
     )
+  }
+
+  statusOnChange(value : string){
+    this.ticketService.getTicketsByStatus(value).subscribe(
+      (response : TicketsList[]) =>
+        {
+          this.tickets = response;
+        }
+    );
   }
 
 }

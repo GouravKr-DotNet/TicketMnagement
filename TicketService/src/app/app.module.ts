@@ -10,7 +10,7 @@ import { TicketsPortalModule } from './tickets-portal/tickets-portal.module';
 import { NewTicketComponent } from './tickets-portal/new-ticket/new-ticket.component';
 import { RegistrationComponent } from './user-module/registration/registration.component';
 import { SplitPipePipe } from './split-pipe.pipe';
-import { EditTicketComponent } from './tickets-portal/edit-ticket/edit-ticket.component';
+import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
 
 @NgModule({
   declarations: [
