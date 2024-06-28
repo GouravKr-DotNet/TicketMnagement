@@ -1,0 +1,108 @@
+<div class="row">
+    <div class="col-md-6">
+        <button type="button" class="btn btn-light" (click)="navigateToForm()">Create New</button>
+    </div>
+    <div class="col-md-6">
+        <label>
+            <select class="custom-select" (change)="statusOnChange(statusDrop.value)" #statusDrop >
+                <option value="All" selected>All</option>
+                <option value="Pending">Pending</option>
+                <option value="Resolved">Resolved</option>
+                <option value="Hold">On-Hold</option>
+            </select>
+        </label>
+    </div>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Ticket Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Status</th>
+        <th scope="col">Generated On</th>
+        <th scope="col">Updated On</th>
+        <th scope="col">Action</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tick of tickets;let i = index">
+        <td>{{ tick.ticketId }}</td>
+        <td>{{ tick.title }}</td>
+        <td>{{ tick.description }}</td>
+        <td>{{ tick.status }}</td>
+        <td>{{ tick.createdOn | splitPipe }}</td>
+        <td>{{ tick.updatedOn | splitPipe}}</td>
+        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_edit" (click)="onEdit($event,i)">Edit</button></td>
+        <td><button type="button" class="btn btn-danger" #modalButton data-toggle="modal" data-target="#exampleModal" (click)="onDelete($event,i)"> Delete
+        </button></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        Are you sure want to delete ticket? <span style="color: rgb(227, 124, 124);" [innerHTML] = "ticketId"></span> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" 
+          (click)="onDeleteConfirmation()">Yes</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <button type="button" class="btn btn-danger" #modalButtonCnf style="display: none;" data-toggle="modal" data-target="#exampleModal_dlt"> 
+</button>
+  <div class="modal fade" id="exampleModal_dlt" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <span [innerHTML]="message"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="exampleModal_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+       <app-edit-ticket [ticketId]="editTicket.ticketId"
+        [title]="editTicket.title" [description]="editTicket.description" [status]="editTicket.status"></app-edit-ticket>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
